@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lili Gao — Projects</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #F6F3EE; --bg-dark: #EEEBE4; --ink: #111009; --ink-2: #3A3830;
+  --ink-3: #7A776E; --ink-4: #B4B0A7; --gold: #B8933A; --gold-light: #F5EDD6;
+  --green: #2A4A38; --green-mid: #3D6B52; --green-light: #EAF1EB;
+  --serif-display: 'Playfair Display', Georgia, serif;
+  --serif-body: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'Space Grotesk', system-ui, sans-serif;
+  --rule: 1px solid rgba(17,16,9,0.12);
+}
+html { scroll-behavior: smooth; }
+body { font-family: var(--sans); background: var(--bg); color: var(--ink); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
+
+/* NAV */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 5vw; }
+nav::before { content: ''; position: absolute; inset: 0; background: rgba(246,243,238,0.88); backdrop-filter: blur(16px); border-bottom: var(--rule); z-index: -1; }
+.nav-logo { font-family: var(--serif-display); font-size: 1.2rem; font-weight: 700; color: var(--ink); text-decoration: none; letter-spacing: -0.01em; }
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a { font-family: var(--sans); font-size: 0.7rem; color: var(--ink-3); text-decoration: none; letter-spacing: 0.15em; text-transform: uppercase; transition: color 0.2s; }
+.nav-links a:hover, .nav-links a.active { color: var(--ink); }
+.nav-cta { font-family: var(--sans); font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--bg); background: var(--ink); padding: 0.55rem 1.4rem; border-radius: 2px; text-decoration: none; transition: background 0.2s; }
+.nav-cta:hover { background: var(--green); }
+
+/* PAGE HEADER */
+.page-header { padding: 10rem 5vw 5rem; max-width: 1200px; margin: 0 auto; }
+.page-header-eyebrow { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+.page-header-line { width: 40px; height: 1px; background: var(--gold); }
+.page-header-label { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
+.page-header-title { font-family: var(--serif-display); font-size: clamp(2.8rem, 5vw, 4.5rem); font-weight: 900; line-height: 0.95; color: var(--ink); letter-spacing: -0.03em; margin-bottom: 1.5rem; }
+.page-header-title em { font-weight: 400; font-style: italic; color: var(--green); display: block; }
+.page-header-desc { font-family: var(--serif-body); font-size: 1.2rem; font-style: italic; color: var(--ink-3); max-width: 560px; line-height: 1.65; }
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 5vw; }
+.full-rule { border: none; border-top: var(--rule); }
+
+/* CATEGORY NAV */
+.cat-nav { display: flex; gap: 0; border-bottom: var(--rule); margin-bottom: 5rem; }
+.cat-nav-item { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-4); text-decoration: none; padding: 1rem 1.75rem; border-bottom: 2px solid transparent; transition: all 0.2s; }
+.cat-nav-item:first-child { padding-left: 0; }
+.cat-nav-item:hover { color: var(--ink); }
+.cat-nav-item.active { color: var(--ink); border-bottom-color: var(--ink); }
+
+/* CATEGORY BLOCK */
+.cat-block { margin-bottom: 7rem; }
+.cat-block-header { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2.5rem; }
+.cat-block-num { font-family: var(--serif-body); font-size: 0.8rem; font-style: italic; color: var(--gold); }
+.cat-block-title { font-family: var(--serif-display); font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 700; color: var(--ink); letter-spacing: -0.02em; flex: 1; }
+.cat-block-title em { font-weight: 400; font-style: italic; color: var(--green); }
+.cat-block-line { flex: 1; height: 1px; background: rgba(17,16,9,0.1); }
+
+/* PROJECT DETAIL CARD */
+.proj-detail {
+  border: var(--rule);
+  background: var(--bg);
+  margin-bottom: 2px;
+  overflow: hidden;
+  transition: background 0.2s;
+}
+.proj-detail:hover { background: #fff; }
+
+.proj-detail-header {
+  padding: 2.5rem 3rem 2rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2rem;
+  align-items: start;
+  border-bottom: var(--rule);
+  cursor: pointer;
+}
+.proj-detail-tag {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  font-size: 0.65rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--gold); background: var(--gold-light); padding: 0.3rem 0.75rem; border-radius: 2px;
+  margin-bottom: 0.85rem;
+}
+.proj-detail-name { font-family: var(--serif-display); font-size: clamp(1.3rem, 2.5vw, 1.9rem); font-weight: 700; color: var(--ink); line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 0.6rem; }
+.proj-detail-summary { font-size: 0.92rem; color: var(--ink-3); line-height: 1.75; max-width: 600px; }
+.proj-toggle { font-size: 1.2rem; color: var(--ink-4); transition: transform 0.3s ease; cursor: pointer; padding-top: 2.5rem; flex-shrink: 0; user-select: none; }
+.proj-detail.open .proj-toggle { transform: rotate(45deg); }
+
+.proj-detail-body {
+  display: none;
+  padding: 2.5rem 3rem 3rem;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
+.proj-detail.open .proj-detail-body { display: grid; }
+
+.proj-section-label { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; }
+.proj-section-text { font-size: 0.9rem; color: var(--ink-2); line-height: 1.8; }
+.proj-section-text p { margin-bottom: 0.75rem; }
+.proj-section-text ul { padding-left: 1.2rem; }
+.proj-section-text ul li { margin-bottom: 0.4rem; }
+
+.proj-impact-grid { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 0.25rem; }
+.proj-impact-item {
+  display: flex; align-items: flex-start; gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  background: var(--green-light);
+  border-left: 2px solid var(--green);
+}
+.proj-impact-icon { font-size: 0.9rem; flex-shrink: 0; color: var(--green-mid); margin-top: 0.05rem; }
+.proj-impact-text { font-size: 0.85rem; color: var(--green); line-height: 1.5; }
+
+.proj-links { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem; padding-top: 1.5rem; border-top: var(--rule); grid-column: 1 / -1; }
+.proj-link {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--green); text-decoration: none; transition: gap 0.2s;
+  border: 1.5px solid rgba(42,74,56,0.25); padding: 0.55rem 1.2rem; border-radius: 2px;
+}
+.proj-link:hover { gap: 0.85rem; border-color: var(--green); }
+
+/* SECTION WRAP */
+.projects-section { padding: 5rem 0 2rem; }
+
+/* FOOTER */
+footer { background: var(--ink); padding: 3rem 5vw; display: flex; justify-content: space-between; align-items: center; }
+.footer-logo { font-family: var(--serif-display); font-size: 1.5rem; font-weight: 700; color: rgba(255,255,255,0.9); letter-spacing: -0.02em; }
+.footer-logo span { font-style: italic; font-weight: 400; color: var(--gold); }
+.footer-copy { font-size: 0.72rem; color: rgba(255,255,255,0.35); letter-spacing: 0.08em; }
+.footer-links { display: flex; gap: 1.5rem; }
+.footer-links a { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: rgba(255,255,255,0.8); }
+
+/* REVEAL */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1); }
+.reveal.visible { opacity: 1; transform: none; }
+.reveal-delay-1 { transition-delay: 0.08s; }
+.reveal-delay-2 { transition-delay: 0.16s; }
+
+@media (max-width: 900px) {
+  .proj-detail-body { grid-template-columns: 1fr; }
+  .proj-detail-header { grid-template-columns: 1fr; }
+  .proj-toggle { display: none; }
+  .proj-detail-body { display: grid !important; }
+}
+@media (max-width: 700px) {
+  .nav-links, .nav-cta { display: none; }
+  .cat-nav { flex-wrap: wrap; gap: 0; }
+  footer { flex-direction: column; gap: 1.5rem; text-align: center; }
+  .proj-detail-header, .proj-detail-body { padding: 1.75rem 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Lili Gao</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="projects.html" class="active">Work</a></li>
+    <li><a href="blog.html">Writing</a></li>
+    <li><a href="experience.html">Experience</a></li>
+  </ul>
+  <a href="index.html#contact" class="nav-cta">Get in touch</a>
+</nav>
+
+<div class="page-header reveal">
+  <div class="page-header-eyebrow">
+    <span class="page-header-line"></span>
+    <span class="page-header-label">Portfolio</span>
+  </div>
+  <h1 class="page-header-title">Work I'm <em>proud of.</em></h1>
+  <p class="page-header-desc">Detailed breakdowns of each project — the problem, the approach, and the impact. Organised by discipline.</p>
+</div>
+
+<hr class="full-rule" />
+
+<div class="projects-section">
+  <div class="container">
+
+    <!-- CATEGORY NAV -->
+    <nav class="cat-nav" aria-label="Project categories">
+      <a href="#automation" class="cat-nav-item active">Automation & AI</a>
+      <a href="#modeling" class="cat-nav-item">Financial Modeling</a>
+      <a href="#research" class="cat-nav-item">Research & Competition</a>
+    </nav>
+
+    <!-- ── AUTOMATION & AI ── -->
+    <div class="cat-block reveal" id="automation">
+      <div class="cat-block-header">
+        <span class="cat-block-num">01</span>
+        <h2 class="cat-block-title">Automation <em>&amp; AI</em></h2>
+      </div>
+
+      <!-- RISK AUTOMATION -->
+      <div class="proj-detail open" id="risk-automation">
+        <div class="proj-detail-header" onclick="toggleProject(this)">
+          <div>
+            <span class="proj-detail-tag">Python · Risk · SFU SIAS</span>
+            <h3 class="proj-detail-name">Risk & Return Monitoring Automation</h3>
+            <p class="proj-detail-summary">A Python automation suite that replaced manual Excel-based risk and performance reporting for the SFU SIAS global equity portfolio — cutting reporting time from days to minutes.</p>
+          </div>
+          <span class="proj-toggle">+</span>
+        </div>
+        <div class="proj-detail-body">
+          <div>
+            <p class="proj-section-label">The Problem</p>
+            <div class="proj-section-text">
+              <p>The SFU SIAS portfolio team was manually compiling weekly risk reports in Excel — pulling data from Bloomberg, calculating active risk, tracking benchmark deviations, and building attribution tables by hand. This process consumed days of analyst time each reporting cycle and introduced inconsistencies from manual data entry.</p>
+              <p>With a CAD 300M+ portfolio, the delay between data and insights was a real operational risk. We needed a system that could run automatically, produce consistent output, and scale as the portfolio grew.</p>
+            </div>
+
+            <p class="proj-section-label" style="margin-top: 2rem;">How I Solved It</p>
+            <div class="proj-section-text">
+              <p>I built a Python-based automation pipeline using <code style="font-family: monospace; font-size: 0.85em; background: var(--bg-dark); padding: 0.1em 0.4em; border-radius: 2px;">pandas</code>, <code style="font-family: monospace; font-size: 0.85em; background: var(--bg-dark); padding: 0.1em 0.4em; border-radius: 2px;">numpy</code>, and <code style="font-family: monospace; font-size: 0.85em; background: var(--bg-dark); padding: 0.1em 0.4em; border-radius: 2px;">matplotlib</code> that ingests raw Bloomberg exports and outputs structured risk and performance reports automatically.</p>
+              <ul>
+                <li>Automated active risk calculation, tracking, and flagging against IPS thresholds</li>
+                <li>Built return attribution module separating sector vs. stock selection effects</li>
+                <li>Integrated benchmark comparison with automatic deviation alerts</li>
+                <li>Designed output templates that go directly into the weekly investment committee deck</li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <p class="proj-section-label">Impact</p>
+            <div class="proj-impact-grid">
+              <div class="proj-impact-item">
+                <span class="proj-impact-icon">◆</span>
+                <span class="proj-impact-text">Reporting time reduced from 2–3 days to under 30 minutes per cycle</span>
+              </div>
+              <div class="proj-impact-item">
+                <span class="proj-impact-icon">◆</span>
+                <span class="proj-impact-text">Eliminated manual transcription errors across 30+ equity positions</span>
+              </div>
+              <div class="proj-impact-item">
+                <span class="proj-impact-icon">◆</span>
+                <span class="proj-impact-text">Enabled real-time risk threshold monitoring for the first time</span>
+              </div>
+              <div class="proj-impact-item">
+                <span class="proj-impact-icon">◆</span>
+                <span class="proj-impact-text">Adopted by the full SIAS portfolio team as the standard reporting workflow</span>
+              </div>
+            </div>
+            <div class="proj-links">
+              <a href="https://github.com/liligaohui/SIAS_Global-Equity-Risk-Performance-Analysis" target="_blank" class="proj-link">View on GitHub →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WORKFLOW AUTOMATION -->
+      <div class="proj-detail" id="workflow-automation">
+        <div class="proj-detail-header" onclick="toggleProject(this)">
+          <div>
+            <span class="proj-detail-tag">NetSuite · AI · GeoComply</span>
+            <h3 class="proj-detail-name">Month-End Close Workflow Automation</h3>
+            <p class="proj-detail-summary">Designed and implemented automated workflows in NetSuite for month-end journal entry preparation and account reconciliation — with locally hosted templates and AI-assisted validation.</p>
+          </div>
+          <span class="proj-toggle">+</span>
+        </div>
+        <div class="proj-detail-body">
+          <div>
+            <p class="proj-section-label">The Problem</p>
+            <div class="proj-section-text">
+              <p>Month-end close at GeoComply involved a significant volume of manual journal entries and reconciliations across multiple accounts and entities. The process was error-prone, time-consuming, and difficult to audit consistently — particularly for recurring entries that followed predictable patterns each period.</p>
+              <p>The team needed a more systematic approach: one that maintained accuracy, reduced manual effort, and produced audit-ready documentation without adding overhead.</p>
+            </div>
+
+            <p class="proj-section-label" style="margin-top: 2rem;">How I Solved It</p>
+            <div class="proj-section-text">
+              <p>I mapped the existing month-end workflow, identified recurring journal entry types, and built automated templates hosted locally that integrate with NetSuite's journal entry system.</p>
+              <ul>
+                <li>Designed structured JE templates for recurring accruals, prepaid amortisation, and intercompany entries</li>
+                <li>Implemented NetSuite saved searches and workflows to pre-populate recurring entries from prior-period data</li>
+                <li>Built a reconciliation framework linking sub-ledger to GL balances with automated variance flagging</li>
+                <li>Integrated AI-assisted review to surface anomalies in account balances before sign-off</li>
+                <li>Hosted templates locally with version control, enabling rollback and period-over-period comparison</li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <p class="proj-section-label">Impact</p>
+            <div class="proj-impact-grid">
+              <div class="proj-impact-item">
+                <span class="proj-impact-icon">◆</span>
+                <span class="proj-impact-text">Reduced manual JE preparation time significantly for recurring entry types</span>
+              </div>
+              <div class="proj-impact-item">
+                <span class="proj-impact-icon">◆</span>
+                <span class="proj-impact-text">Improved reconciliation consistency and produced cleaner audit trails</span>
+              </div>
+              <div class="proj-impact-item">
+                <span class="proj-impact-icon">◆</span>
+                <span class="proj-impact-text">AI validation layer catches balance anomalies before month-end sign-off</span>
+              </div>
+              <div class="proj-impact-item">
+                <span class="proj-impact-icon">◆</span>
+                <span class="proj-impact-text">Templates reusable across periods with minimal manual adjustment</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── FINANCIAL MODELING ── -->
+    <div class="cat-block reveal" id="modeling">
+      <div class="cat-block-header">
+        <span class="cat-block-num">02</span>
+        <h2 class="cat-block-title">Financial <em>Modeling</em></h2>
+      </div>
+
+      <!-- PORTFOLIO MANAGEMENT -->
+      <div class="proj-detail" id="portfolio-management">
+        <div class="proj-detail-header" onclick="toggleProject(this)">
+          <div>
+            <span class="proj-detail-tag">Portfolio Management · SFU SIAS</span>
+            <h3 class="proj-detail-name">CAD 300M+ Equity Portfolio — Risk & Compliance</h3>
+            <p class="proj-detail-summary">Managed all risk and compliance functions for the SFU SIAS student-managed equity portfolio, achieving approximately 10% active return with 2.93% annualised risk.</p>
+          </div>
+          <span class="proj-toggle">+</span>
+        </div>
+        <div class="proj-detail-body">
+          <div>
+            <p class="proj-section-label">The Problem</p>
+            <div class="proj-section-text">
+              <p>The SIAS global equity portfolio lacked a systematic risk framework. Compliance with the Investment Policy Statement (IPS) was tracked informally, stress testing was inconsistent, and there was no structured process for identifying when the portfolio drifted outside its mandated risk parameters.</p>
+              <p>As incoming Risk & Compliance Portfolio Manager, I needed to build this infrastructure from scratch — while simultaneously managing live positions in a real, multi-hundred-million-dollar portfolio.</p>
+            </div>
+
+            <p class="proj-section-label" style="margin-top: 2rem;">How I Solved It</p>
+            <div class="proj-section-text">
+              <p>I designed and implemented a comprehensive risk management framework covering all dimensions of portfolio risk:</p>
+              <ul>
+                <li>Built an active risk monitoring system tracking ex-ante and ex-post tracking error against benchmark</li>
+                <li>Implemented formal stress testing framework covering historical scenarios (2008 GFC, 2020 COVID, 2022 rate shock) and hypothetical shocks</li>
+                <li>Designed scenario analysis tools to model portfolio impact of macro events (recession, rate changes, FX moves)</li>
+                <li>Led monthly IPS compliance reviews, producing structured reports for the investment committee</li>
+                <li>Coordinated with sector managers to ensure position sizing stayed within mandate constraints</li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <p class="proj-section-label">Impact</p>
+            <div class="proj-impact-grid">
+              <div class="proj-impact-item">
+                <span class="proj-impact-icon">◆</span>
+                <span class="proj-impact-text">~10% active return achieved with only 2.93% annualised tracking risk</span>
+              </div>
+              <div class="proj-impact-item">
+                <span class="proj-impact-icon">◆</span>
+                <span class="proj-impact-text">Zero IPS compliance breaches during tenure as Risk Manager</span>
+              </div>
+              <div class="proj-impact-item">
+                <span class="proj-impact-icon">◆</span>
+                <span class="proj-impact-text">First formal stress testing framework adopted in SIAS history</span>
+              </div>
+              <div class="proj-impact-item">
+                <span class="proj-impact-icon">◆</span>
+                <span class="proj-impact-text">Risk reporting automated via Python (see Risk Automation project)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DCF MODELING -->
+      <div class="proj-detail" id="dcf-modeling">
+        <div class="proj-detail-header" onclick="toggleProject(this)">
+          <div>
+            <span class="proj-detail-tag">DCF · Valuation · Equity Research</span>
+            <h3 class="proj-detail-name">DCF Valuation Models</h3>
+            <p class="proj-detail-summary">Built bottom-up DCF models for equity investment decisions within the SIAS portfolio — covering revenue drivers, capital structure assumptions, and multi-scenario sensitivity analysis.</p>
+          </div>
+          <span class="proj-toggle">+</span>
+        </div>
+        <div class="proj-detail-body">
+          <div>
+            <p class="proj-section-label">The Problem</p>
+            <div class="proj-section-text">
+              <p>Investment decisions within the SIAS portfolio required rigorous valuation support. Sector analysts needed DCF models that were not just technically correct, but robust enough to withstand scrutiny in investment committee presentations — and flexible enough to stress-test key assumptions quickly.</p>
+              <p>Generic DCF templates were insufficient. Each sector and company required a model tailored to its business model, growth drivers, and capital structure.</p>
+            </div>
+
+            <p class="proj-section-label" style="margin-top: 2rem;">How I Solved It</p>
+            <div class="proj-section-text">
+              <p>I built modular, bottom-up DCF models adaptable across sectors:</p>
+              <ul>
+                <li>Revenue build from volume and pricing drivers, not simple growth rate assumptions</li>
+                <li>WACC built from first principles — cost of equity via CAPM, cost of debt from credit spreads</li>
+                <li>Terminal value calculated via both Gordon Growth and EV/EBITDA exit multiple methods for cross-validation</li>
+                <li>Full sensitivity tables across WACC and terminal growth rate combinations</li>
+                <li>Scenario analysis (base / bull / bear) with one-click switching for investment committee presentations</li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <p class="proj-section-label">Impact</p>
+            <div class="proj-impact-grid">
+              <div class="proj-impact-item">
+                <span class="proj-impact-icon">◆</span>
+                <span class="proj-impact-text">Models used to support live investment decisions in the 300M+ portfolio</span>
+              </div>
+              <div class="proj-impact-item">
+                <span class="proj-impact-icon">◆</span>
+                <span class="proj-impact-text">Sensitivity framework highlighted key risk factors before position entry</span>
+              </div>
+              <div class="proj-impact-item">
+                <span class="proj-impact-icon">◆</span>
+                <span class="proj-impact-text">Reusable template adopted by multiple sector teams across SIAS</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── RESEARCH & COMPETITION ── -->
+    <div class="cat-block reveal" id="research">
+      <div class="cat-block-header">
+        <span class="cat-block-num">03</span>
+        <h2 class="cat-block-title">Research <em>&amp; Competition</em></h2>
+      </div>
+
+      <!-- RBC CASE -->
+      <div class="proj-detail" id="rbc-case">
+        <div class="proj-detail-header" onclick="toggleProject(this)">
+          <div>
+            <span class="proj-detail-tag">Case Competition · Finance · 2025</span>
+            <h3 class="proj-detail-name">RBC × Rotman Sustainable Finance Case Competition 2025</h3>
+            <p class="proj-detail-summary">Developed a proprietary scoring framework integrating MSCI data and fundamental analysis, with a stewardship engagement plan for underperforming portfolio companies.</p>
+          </div>
+          <span class="proj-toggle">+</span>
+        </div>
+        <div class="proj-detail-body">
+          <div>
+            <p class="proj-section-label">The Problem</p>
+            <div class="proj-section-text">
+              <p>The RBC × Rotman case challenged teams to build a sustainable investing framework for a real institutional portfolio — integrating non-financial factors into fundamental analysis without sacrificing financial rigour.</p>
+              <p>The core tension: off-the-shelf frameworks treat all sectors the same. We needed an approach that was sector-aware, data-driven, and actionable — not just a checkbox exercise.</p>
+            </div>
+
+            <p class="proj-section-label" style="margin-top: 2rem;">How I Solved It</p>
+            <div class="proj-section-text">
+              <p>I led development of a sector-adjusted scoring framework built on MSCI data, layered with fundamental analysis:</p>
+              <ul>
+                <li>Scored companies on material factors weighted by sector relevance, not uniformly across all categories</li>
+                <li>Integrated scores into valuation framework as a cost-of-capital adjustment — companies with weaker scores faced higher discount rates</li>
+                <li>Identified underperforming portfolio companies and designed a structured stewardship engagement plan with specific targets and timelines</li>
+                <li>Presented recommendations to an RBC judging panel with full quantitative backing</li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <p class="proj-section-label">Impact</p>
+            <div class="proj-impact-grid">
+              <div class="proj-impact-item">
+                <span class="proj-impact-icon">◆</span>
+                <span class="proj-impact-text">Presented a fully integrated scoring and valuation framework to RBC judges</span>
+              </div>
+              <div class="proj-impact-item">
+                <span class="proj-impact-icon">◆</span>
+                <span class="proj-impact-text">Sector-adjusted scoring approach praised for analytical depth</span>
+              </div>
+              <div class="proj-impact-item">
+                <span class="proj-impact-icon">◆</span>
+                <span class="proj-impact-text">Stewardship plan included concrete engagement milestones and accountability metrics</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ESG DATA COLLECTION -->
+      <div class="proj-detail" id="esg-data">
+        <div class="proj-detail-header" onclick="toggleProject(this)">
+          <div>
+            <span class="proj-detail-tag">Research · CityU · Data Collection</span>
+            <h3 class="proj-detail-name">Corporate Annual Report Data Collection</h3>
+            <p class="proj-detail-summary">Led a team of four research assistants at City University of Hong Kong to collect and structure data from 500+ corporate annual reports for academic research under Dr. Long Wang.</p>
+          </div>
+          <span class="proj-toggle">+</span>
+        </div>
+        <div class="proj-detail-body">
+          <div>
+            <p class="proj-section-label">The Problem</p>
+            <div class="proj-section-text">
+              <p>Academic research on corporate disclosure required a large, clean dataset drawn directly from annual reports and legal documents — not available from commercial data providers in the format needed. The research team needed structured, consistent data extracted manually from hundreds of reports across multiple sectors and geographies.</p>
+            </div>
+
+            <p class="proj-section-label" style="margin-top: 2rem;">How I Solved It</p>
+            <div class="proj-section-text">
+              <ul>
+                <li>Coordinated a four-person RA team, assigning coverage, setting quality standards, and reviewing output for consistency</li>
+                <li>Built a structured coding framework so data extraction was systematic and reproducible across all team members</li>
+                <li>Reviewed 300+ legal documents to cross-reference and verify data accuracy</li>
+                <li>Delivered a clean, analysis-ready dataset used in Dr. Long Wang's research</li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <p class="proj-section-label">Impact</p>
+            <div class="proj-impact-grid">
+              <div class="proj-impact-item">
+                <span class="proj-impact-icon">◆</span>
+                <span class="proj-impact-text">500+ reports processed with consistent extraction methodology</span>
+              </div>
+              <div class="proj-impact-item">
+                <span class="proj-impact-icon">◆</span>
+                <span class="proj-impact-text">Dataset directly supported academic research publication pipeline</span>
+              </div>
+              <div class="proj-impact-item">
+                <span class="proj-impact-icon">◆</span>
+                <span class="proj-impact-text">Managed and coordinated a team of 4 RAs throughout the project</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MARKET EXPANSION -->
+      <div class="proj-detail" id="market-expansion">
+        <div class="proj-detail-header" onclick="toggleProject(this)">
+          <div>
+            <span class="proj-detail-tag">Market Research · China · Dubai</span>
+            <h3 class="proj-detail-name">China & Dubai Market Expansion Research</h3>
+            <p class="proj-detail-summary">Financial planning and market entry research supporting Allied Power's expansion into Mainland China and Dubai — resulting in confirmed partnerships with consulting firms in both regions.</p>
+          </div>
+          <span class="proj-toggle">+</span>
+        </div>
+        <div class="proj-detail-body">
+          <div>
+            <p class="proj-section-label">The Problem</p>
+            <div class="proj-section-text">
+              <p>Allied Power Corporate Advisory was exploring expansion into Mainland China and Dubai as part of a broader growth strategy. Before committing resources, the firm needed credible market entry analysis — covering regulatory environment, competitive landscape, client acquisition potential, and partner identification.</p>
+            </div>
+
+            <p class="proj-section-label" style="margin-top: 2rem;">How I Solved It</p>
+            <div class="proj-section-text">
+              <ul>
+                <li>Researched regulatory requirements for corporate advisory services in both jurisdictions — including licensing, entity structure requirements, and KYC obligations</li>
+                <li>Mapped the competitive landscape and identified potential local partners with complementary capabilities</li>
+                <li>Prepared financial projections modelling revenue potential, cost structure, and break-even timelines for each market</li>
+                <li>Developed partnership evaluation criteria and supported the partner selection process</li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <p class="proj-section-label">Impact</p>
+            <div class="proj-impact-grid">
+              <div class="proj-impact-item">
+                <span class="proj-impact-icon">◆</span>
+                <span class="proj-impact-text">Research directly supported confirmed partnerships in both China and Dubai</span>
+              </div>
+              <div class="proj-impact-item">
+                <span class="proj-impact-icon">◆</span>
+                <span class="proj-impact-text">Financial models gave leadership a clear view of entry costs and revenue runway</span>
+              </div>
+              <div class="proj-impact-item">
+                <span class="proj-impact-icon">◆</span>
+                <span class="proj-impact-text">Regulatory analysis reduced compliance uncertainty before market entry</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end research block -->
+
+  </div><!-- end container -->
+</div><!-- end projects section -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Lili <span>Gao.</span></div>
+  <p class="footer-copy">© 2025 Lili Gao · Vancouver, BC</p>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="experience.html">Experience</a>
+    <a href="blog.html">Writing</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+</footer>
+
+<script>
+function toggleProject(headerEl) {
+  const card = headerEl.closest('.proj-detail');
+  card.classList.toggle('open');
+}
+
+// Auto-open if hash matches
+window.addEventListener('DOMContentLoaded', () => {
+  const hash = window.location.hash.replace('#', '');
+  if (hash) {
+    const target = document.getElementById(hash);
+    if (target) {
+      target.classList.add('open');
+      setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }), 300);
+    }
+  }
+});
+
+// Cat nav active state
+const catLinks = document.querySelectorAll('.cat-nav-item');
+const catBlocks = document.querySelectorAll('.cat-block');
+window.addEventListener('scroll', () => {
+  let current = '';
+  catBlocks.forEach(b => { if (window.scrollY >= b.offsetTop - 180) current = b.id; });
+  catLinks.forEach(a => { a.classList.toggle('active', a.getAttribute('href') === '#' + current); });
+}, { passive: true });
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+  });
+}, { threshold: 0.07 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lili Gao — Experience & Education</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #F6F3EE;
+  --bg-dark: #EEEBE4;
+  --ink: #111009;
+  --ink-2: #3A3830;
+  --ink-3: #7A776E;
+  --ink-4: #B4B0A7;
+  --gold: #B8933A;
+  --gold-light: #F5EDD6;
+  --green: #2A4A38;
+  --green-mid: #3D6B52;
+  --green-light: #EAF1EB;
+  --serif-display: 'Playfair Display', Georgia, serif;
+  --serif-body: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'Space Grotesk', system-ui, sans-serif;
+  --rule: 1px solid rgba(17,16,9,0.12);
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: var(--sans); background: var(--bg); color: var(--ink); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
+
+/* ─── NAV ─── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.5rem 5vw;
+}
+nav::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: rgba(246,243,238,0.88);
+  backdrop-filter: blur(16px);
+  border-bottom: var(--rule);
+  z-index: -1;
+}
+.nav-logo { font-family: var(--serif-display); font-size: 1.2rem; font-weight: 700; color: var(--ink); text-decoration: none; letter-spacing: -0.01em; }
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a { font-family: var(--sans); font-size: 0.7rem; font-weight: 400; color: var(--ink-3); text-decoration: none; letter-spacing: 0.15em; text-transform: uppercase; transition: color 0.2s; }
+.nav-links a:hover, .nav-links a.active { color: var(--ink); }
+.nav-cta { font-family: var(--sans); font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--bg); background: var(--ink); padding: 0.55rem 1.4rem; border-radius: 2px; text-decoration: none; transition: background 0.2s; }
+.nav-cta:hover { background: var(--green); }
+
+/* ─── PAGE HEADER ─── */
+.page-header {
+  padding: 10rem 5vw 5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.page-header-eyebrow {
+  display: flex; align-items: center; gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.page-header-line { width: 40px; height: 1px; background: var(--gold); }
+.page-header-label { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
+.page-header-title { font-family: var(--serif-display); font-size: clamp(2.8rem, 5vw, 4.5rem); font-weight: 900; line-height: 0.95; color: var(--ink); letter-spacing: -0.03em; margin-bottom: 1.5rem; }
+.page-header-title em { font-weight: 400; font-style: italic; color: var(--green); display: block; }
+.page-header-desc { font-family: var(--serif-body); font-size: 1.2rem; font-style: italic; color: var(--ink-3); max-width: 560px; line-height: 1.65; }
+
+/* ─── LAYOUT ─── */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 5vw; }
+
+/* ─── SECTION HEADER ─── */
+.section-header { display: flex; align-items: baseline; gap: 2rem; margin-bottom: 4rem; padding-bottom: 1.5rem; border-bottom: var(--rule); }
+.section-num { font-family: var(--serif-body); font-size: 0.8rem; font-style: italic; color: var(--gold); min-width: 2rem; }
+.section-title { font-family: var(--serif-display); font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; line-height: 1.1; color: var(--ink); letter-spacing: -0.02em; flex: 1; }
+.section-title em { font-weight: 400; font-style: italic; color: var(--green); }
+.section-side { font-size: 0.78rem; color: var(--ink-3); max-width: 220px; text-align: right; line-height: 1.6; }
+
+.full-rule { border: none; border-top: var(--rule); }
+
+/* ─── TIMELINE ─── */
+section { padding: 6rem 0; }
+.timeline { position: relative; padding-left: 2.5rem; border-left: 1px solid rgba(17,16,9,0.12); display: flex; flex-direction: column; gap: 0; }
+.timeline-item { position: relative; padding-bottom: 3rem; }
+.timeline-item:last-child { padding-bottom: 0; }
+.timeline-dot {
+  position: absolute; left: -2.85rem; top: 0.45rem;
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--green);
+  border: 2px solid var(--bg);
+  outline: 1px solid var(--green);
+}
+.timeline-date { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-4); margin-bottom: 0.4rem; }
+.timeline-role { font-family: var(--serif-display); font-size: 1.3rem; font-weight: 700; color: var(--ink); margin-bottom: 0.15rem; letter-spacing: -0.01em; }
+.timeline-company { font-size: 0.85rem; font-weight: 500; color: var(--green-mid); margin-bottom: 0.8rem; }
+.timeline-desc { font-size: 0.9rem; color: var(--ink-3); line-height: 1.8; max-width: 680px; }
+.timeline-desc ul { padding-left: 1.2rem; margin-top: 0.5rem; }
+.timeline-desc ul li { margin-bottom: 0.4rem; }
+
+/* ─── EDUCATION CARDS ─── */
+.edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5px; background: rgba(17,16,9,0.1); }
+.edu-card { background: var(--bg); padding: 2.5rem; transition: background 0.2s; }
+.edu-card:hover { background: #fff; }
+.edu-degree { font-family: var(--serif-display); font-size: 1.25rem; font-weight: 700; color: var(--ink); margin-bottom: 0.35rem; letter-spacing: -0.01em; }
+.edu-school { font-size: 0.85rem; font-weight: 500; color: var(--green-mid); margin-bottom: 0.4rem; }
+.edu-detail { font-size: 0.8rem; color: var(--ink-4); }
+
+/* ─── CERT GRID ─── */
+.cert-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; background: rgba(17,16,9,0.1); }
+.cert-card { background: var(--bg); padding: 2rem 1.75rem; transition: background 0.2s; position: relative; overflow: hidden; }
+.cert-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform 0.3s ease; }
+.cert-card:hover { background: #fff; }
+.cert-card:hover::after { transform: scaleX(1); }
+.cert-name { font-family: var(--serif-display); font-size: 1rem; font-weight: 700; color: var(--ink); margin-bottom: 0.3rem; line-height: 1.3; }
+.cert-issuer { font-size: 0.78rem; color: var(--ink-4); margin-bottom: 0.6rem; }
+.cert-link { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green); text-decoration: none; transition: gap 0.2s; display: inline-flex; align-items: center; gap: 0.4rem; }
+.cert-link:hover { gap: 0.7rem; }
+
+/* ─── FOOTER ─── */
+footer { background: var(--ink); padding: 3rem 5vw; display: flex; justify-content: space-between; align-items: center; }
+.footer-logo { font-family: var(--serif-display); font-size: 1.5rem; font-weight: 700; color: rgba(255,255,255,0.9); letter-spacing: -0.02em; }
+.footer-logo span { font-style: italic; font-weight: 400; color: var(--gold); }
+.footer-copy { font-size: 0.72rem; color: rgba(255,255,255,0.35); letter-spacing: 0.08em; }
+.footer-links { display: flex; gap: 1.5rem; }
+.footer-links a { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: rgba(255,255,255,0.8); }
+
+/* ─── REVEAL ─── */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1); }
+.reveal.visible { opacity: 1; transform: none; }
+.reveal-delay-1 { transition-delay: 0.08s; }
+.reveal-delay-2 { transition-delay: 0.16s; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+  .edu-grid { grid-template-columns: 1fr; }
+  .cert-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 700px) {
+  .nav-links, .nav-cta { display: none; }
+  .cert-grid { grid-template-columns: 1fr; }
+  .section-side { display: none; }
+  footer { flex-direction: column; gap: 1.5rem; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Lili Gao</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="projects.html">Work</a></li>
+    <li><a href="blog.html">Writing</a></li>
+    <li><a href="experience.html" class="active">Experience</a></li>
+  </ul>
+  <a href="index.html#contact" class="nav-cta">Get in touch</a>
+</nav>
+
+<div class="page-header reveal">
+  <div class="page-header-eyebrow">
+    <span class="page-header-line"></span>
+    <span class="page-header-label">Background</span>
+  </div>
+  <h1 class="page-header-title">Experience &amp; <em>Education.</em></h1>
+  <p class="page-header-desc">A track record spanning accounting, portfolio management, and automation across Canada, Hong Kong, and China — backed by rigorous finance education.</p>
+</div>
+
+<hr class="full-rule" />
+
+<!-- WORK EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-num">01</span>
+      <h2 class="section-title">Where I've <em>worked.</em></h2>
+      <p class="section-side">Roles across accounting, portfolio management, and research since 2021.</p>
+    </div>
+    <div class="timeline">
+
+      <div class="timeline-item reveal">
+        <span class="timeline-dot"></span>
+        <p class="timeline-date">Jan 2026 — Present</p>
+        <p class="timeline-role">Accounting Intern</p>
+        <p class="timeline-company">GeoComply · Vancouver, BC (On-site)</p>
+        <p class="timeline-desc">Supporting the accounting team at GeoComply, a global geolocation compliance technology company headquartered in Vancouver. Implementing workflow automations for month-end close, journal entry preparation, and reconciliation processes.</p>
+      </div>
+
+      <div class="timeline-item reveal reveal-delay-1">
+        <span class="timeline-dot"></span>
+        <p class="timeline-date">Nov 2024 — Jan 2026</p>
+        <p class="timeline-role">Risk & Compliance Portfolio Manager</p>
+        <p class="timeline-company">Simon Fraser University (SIAS) · Vancouver, BC</p>
+        <div class="timeline-desc">
+          <ul>
+            <li>Managed a CAD 300M+ equity portfolio, achieving ~10% active return with only 2.93% annualised risk.</li>
+            <li>Developed and maintained a comprehensive risk management framework including active risk monitoring, stress tests, and scenario analysis.</li>
+            <li>Led monthly compliance reviews against IPS guidelines and updated policies to reflect evolving regulatory standards.</li>
+            <li>Built Python automation pipelines for risk reporting and return attribution, reducing reporting time from days to minutes.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal reveal-delay-2">
+        <span class="timeline-dot"></span>
+        <p class="timeline-date">Jun 2025 — Jan 2026</p>
+        <p class="timeline-role">Teaching Assistant</p>
+        <p class="timeline-company">Simon Fraser University · Vancouver, BC (Part-time)</p>
+        <p class="timeline-desc">Supported instruction for BUS 303 Business Ethics, BUS 201 Introduction to Business, and BUS 764 Corporate Finance. Provided academic support and course administration.</p>
+      </div>
+
+      <div class="timeline-item reveal">
+        <span class="timeline-dot"></span>
+        <p class="timeline-date">May 2023 — Aug 2024</p>
+        <p class="timeline-role">Accounting Intern</p>
+        <p class="timeline-company">Allied Power Corporate Advisory Limited · Hong Kong (On-site)</p>
+        <div class="timeline-desc">
+          <ul>
+            <li>Used the CSA system to maintain records for 300+ companies including annual reports, share registers, and statutory documents.</li>
+            <li>Conducted KYC and AML due diligence for 100+ clients including BVI entities.</li>
+            <li>Contributed to market expansion research into Mainland China and Dubai, securing partnerships with consulting firms in both regions.</li>
+            <li>Prepared account resolutions for 14 clients and managed 4 audit reports across multiple industries.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal reveal-delay-1">
+        <span class="timeline-dot"></span>
+        <p class="timeline-date">Sep 2022 — Mar 2024</p>
+        <p class="timeline-role">Research Assistant</p>
+        <p class="timeline-company">City University of Hong Kong · Hong Kong (Hybrid)</p>
+        <div class="timeline-desc">
+          <ul>
+            <li>Led a team of four RAs to collect and organise data from 500+ corporate annual reports under Dr. Long Wang.</li>
+            <li>Reviewed 300+ legal documents to ensure comprehensive research support.</li>
+            <li>Previously supported Dr. Yanni Yan with reference gathering and courseware preparation (Apr–Oct 2022).</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal reveal-delay-2">
+        <span class="timeline-dot"></span>
+        <p class="timeline-date">Sep 2021 — Jan 2022</p>
+        <p class="timeline-role">Teaching Assistant</p>
+        <p class="timeline-company">City University of Hong Kong · Hong Kong</p>
+        <p class="timeline-desc">Assisted Dr. Lam with course registration, assignment management, and classroom administration tasks.</p>
+      </div>
+
+      <div class="timeline-item reveal">
+        <span class="timeline-dot"></span>
+        <p class="timeline-date">Oct 2021 — May 2023</p>
+        <p class="timeline-role">Student Helper</p>
+        <p class="timeline-company">City University of Hong Kong · Hong Kong (On-site)</p>
+        <p class="timeline-desc">Provided front-desk services and managed lab data. Delivered safety orientations to 50+ PhD students. Handled documentation and personnel coordination.</p>
+      </div>
+
+      <div class="timeline-item reveal reveal-delay-1">
+        <span class="timeline-dot"></span>
+        <p class="timeline-date">Sep 2021 — Nov 2021</p>
+        <p class="timeline-role">Research Intern</p>
+        <p class="timeline-company">China Securities Co., Ltd. · Remote</p>
+        <p class="timeline-desc">Collaborated with team leaders to write five research reports on the housing and technology industries. Presented findings in weekly meetings using financial databases.</p>
+      </div>
+
+      <div class="timeline-item reveal reveal-delay-2">
+        <span class="timeline-dot"></span>
+        <p class="timeline-date">May 2021 — Aug 2021</p>
+        <p class="timeline-role">Summer Intern</p>
+        <p class="timeline-company">Founder Securities Co., Ltd. · Guangdong, China (On-site)</p>
+        <p class="timeline-desc">Facilitated 100+ account openings, processed 40+ financial reimbursements, and coordinated 5 external expansion efforts. Assisted 80+ customers with daily inquiries.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="full-rule" />
+
+<!-- EDUCATION -->
+<section id="education" style="background: var(--bg-dark);">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-num">02</span>
+      <h2 class="section-title">Academic <em>background.</em></h2>
+    </div>
+    <div class="edu-grid">
+      <div class="edu-card reveal">
+        <p class="edu-degree">Master of Science — Finance</p>
+        <p class="edu-school">Beedie School of Business, Simon Fraser University</p>
+        <p class="edu-detail">Jun 2024 — Dec 2025 · Research Stream · Vancouver, BC</p>
+      </div>
+      <div class="edu-card reveal reveal-delay-1">
+        <p class="edu-degree">Bachelor's Degree — Accounting & Finance</p>
+        <p class="edu-school">City University of Hong Kong</p>
+        <p class="edu-detail">2020 — 2024 · Hong Kong SAR</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="full-rule" />
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-num">03</span>
+      <h2 class="section-title">Professional <em>credentials.</em></h2>
+    </div>
+    <div class="cert-grid">
+      <div class="cert-card reveal">
+        <p class="cert-name">CFA Level 1</p>
+        <p class="cert-issuer">CFA Institute · Sep 2025</p>
+      </div>
+      <div class="cert-card reveal reveal-delay-1">
+        <p class="cert-name">FRM Level 1</p>
+        <p class="cert-issuer">GARP · 2025</p>
+      </div>
+      <div class="cert-card reveal reveal-delay-2">
+        <p class="cert-name">Supervised Machine Learning: Regression & Classification</p>
+        <p class="cert-issuer">DeepLearning.AI & Stanford University · Apr 2025</p>
+        <a href="https://www.coursera.org/account/accomplishments/records/WW3QHTSRS45Q" target="_blank" class="cert-link">View credential →</a>
+      </div>
+      <div class="cert-card reveal">
+        <p class="cert-name">Bloomberg Market Concepts</p>
+        <p class="cert-issuer">Bloomberg · Oct 2024</p>
+        <a href="https://portal.bloombergforeducation.com/certificates/32FQgwDMRFwS4N6VRUmCeUVS" target="_blank" class="cert-link">View credential →</a>
+      </div>
+      <div class="cert-card reveal reveal-delay-1">
+        <p class="cert-name">Environmental Social Governance (ESG)</p>
+        <p class="cert-issuer">Bloomberg · Oct 2024</p>
+        <a href="https://portal.bloombergforeducation.com/certificates/Rr92oETtK6wYGMSNRRtP7dfF" target="_blank" class="cert-link">View credential →</a>
+      </div>
+      <div class="cert-card reveal reveal-delay-2">
+        <p class="cert-name">Bloomberg Finance Fundamentals</p>
+        <p class="cert-issuer">Bloomberg · Oct 2024</p>
+        <a href="https://portal.bloombergforeducation.com/certificates/NSqXkn5jpaXTm6FQDKczCvqz" target="_blank" class="cert-link">View credential →</a>
+      </div>
+      <div class="cert-card reveal">
+        <p class="cert-name">Fundamentals of Data Analysis in Excel</p>
+        <p class="cert-issuer">Corporate Finance Institute (CFI) · Jul 2024</p>
+        <a href="http://credentials.corporatefinanceinstitute.com/db0ed9a9-72d9-4a40-9ff7-da431567ec33" target="_blank" class="cert-link">View credential →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Lili <span>Gao.</span></div>
+  <p class="footer-copy">© 2025 Lili Gao · Vancouver, BC</p>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="projects.html">Work</a>
+    <a href="blog.html">Writing</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+  });
+}, { threshold: 0.07 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
