@@ -918,21 +918,30 @@ footer {
       <span class="section-num">04</span>
       <h2 class="section-title"><em>Let's</em> talk.</h2>
     </div>
+
     <div class="contact-layout">
       <div class="reveal">
-        <p class="contact-large-text">Got an <strong>opportunity</strong> or just want to connect?</p>
-        <p class="contact-text">Whether it's a collaboration, a role, or just a conversation about finance and markets — I'd love to hear from you.</p>
+        <p class="contact-large-text">
+          Got an <strong>opportunity</strong> or just want to connect?
+        </p>
+
+        <p class="contact-text">
+          Whether it's a collaboration, a role, or just a conversation about finance and markets — I'd love to hear from you.
+        </p>
+
         <div class="contact-links">
           <a href="mailto:liligaohui@outlook.com" class="contact-link-row">
             <span class="contact-link-label">Email</span>
-            <span class="contact-link-value">hello@liligao.com</span>
+            <span class="contact-link-value">liligaohui@outlook.com</span>
             <span class="contact-link-arrow">↗</span>
           </a>
+
           <a href="https://linkedin.com/in/liligaohui" target="_blank" class="contact-link-row">
             <span class="contact-link-label">LinkedIn</span>
             <span class="contact-link-value">linkedin.com/in/liligaohui</span>
             <span class="contact-link-arrow">↗</span>
           </a>
+
           <a href="https://github.com/liligaohui" target="_blank" class="contact-link-row">
             <span class="contact-link-label">GitHub</span>
             <span class="contact-link-value">github.com/liligaohui</span>
@@ -940,25 +949,32 @@ footer {
           </a>
         </div>
       </div>
+
       <div class="reveal reveal-delay-2">
-        <form class="contact-form" onsubmit="handleSubmit(event)">
+        <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
           <div class="form-group">
             <label class="form-label">Your name</label>
-            <input type="text" placeholder="Leo Smith" required />
+            <input type="text" name="name" placeholder="Leo Smith" required />
           </div>
+
           <div class="form-group">
             <label class="form-label">Email address</label>
-            <input type="email" placeholder="Leo@company.com" required />
+            <input type="email" name="email" placeholder="Leo@company.com" required />
           </div>
+
           <div class="form-group">
             <label class="form-label">Subject</label>
-            <input type="text" placeholder="Opportunity / Collaboration / Hello" />
+            <input type="text" name="subject" placeholder="Opportunity / Collaboration / Hello" />
           </div>
+
           <div class="form-group">
             <label class="form-label">Message</label>
-            <textarea placeholder="Tell me what's on your mind…"></textarea>
+            <textarea name="message" placeholder="Tell me what's on your mind…" required></textarea>
           </div>
-          <button type="submit" class="btn btn-dark" style="align-self:flex-start; margin-top:0.5rem;">Send message →</button>
+
+          <button type="submit" class="btn btn-dark" style="align-self:flex-start; margin-top:0.5rem;">
+            Send message →
+          </button>
         </form>
       </div>
     </div>
